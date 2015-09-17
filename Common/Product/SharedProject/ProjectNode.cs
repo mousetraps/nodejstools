@@ -3506,7 +3506,7 @@ namespace Microsoft.VisualStudioTools.Project {
                         string fragment;
                         ErrorHandler.ThrowOnFailure(((ProjectConfig)config).GetXmlFragment(flavor, _PersistStorageType.PST_PROJECT_FILE, out fragment));
                         if (!String.IsNullOrEmpty(fragment)) {
-                            WrapXmlFragment(doc, root, flavor, ((ProjectConfig)config).ConfigName, ((ProjectConfig)config).PlatformName, fragment);
+                            WrapXmlFragment(doc, root, flavor, ((ProjectConfig)config).ConfigName, GetMsBuildProjectPlatform(((ProjectConfig)config).PlatformName), fragment);
                         }
                     }
                 }
@@ -5137,6 +5137,15 @@ If the files in the existing folder have the same names as files in the folder y
             node.InnerXml = fragment;
             root.AppendChild(node);
             return node;
+        }
+
+        /// <summary>
+        /// Gets the platform name to be saved into a project file by replacing "Any CPU" with "AnyCPU".
+        /// </summary>
+        /// <param name="projectPlatformName">Platform name from ProjectConfig</param>
+        /// <returns></returns>
+        private string GetMsBuildProjectPlatform(string projectPlatformName) {
+            return projectPlatformName == "Any CPU" ? "AnyCPU" : projectPlatformName;
         }
 
         /// <summary>
