@@ -27,6 +27,7 @@ using System.Xml;
 using Microsoft.NodejsTools.Telemetry;
 using Microsoft.VisualStudio.Language.Intellisense;
 using Microsoft.VisualStudioTools;
+using System.Threading;
 
 namespace Microsoft.NodejsTools.Project.ImportWizard {
     internal class ImportSettings : DependencyObject {
@@ -228,7 +229,7 @@ namespace Microsoft.NodejsTools.Project.ImportWizard {
                         }
                     }
                 }
-            });
+            }, CancellationToken.None, TaskCreationOptions.HideScheduler, TaskScheduler.Default);
         }
 
         private static bool ShouldIncludeDirectory(string dirName) {
