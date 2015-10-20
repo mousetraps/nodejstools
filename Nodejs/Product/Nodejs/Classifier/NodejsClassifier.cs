@@ -485,6 +485,7 @@ namespace Microsoft.NodejsTools.Classifier {
                 // ECMA strict reserved words
                 case JSToken.Implements:
                 case JSToken.In:
+                case JSToken.Of:
                 case JSToken.InstanceOf:
                 case JSToken.Interface:
                 case JSToken.Let:

@@ -97,6 +97,7 @@ namespace Microsoft.NodejsTools.Parsing
 
         InstanceOf,
         In,
+        Of,
         Comma,                          // ,
 
         Assign,                         // =

@@ -40,7 +40,7 @@ namespace Microsoft.NodejsTools.Intellisense {
 
         private static string[] _keywords = new[] {
             "break", "case", "catch", "class", "const", "continue", "default", "delete", "do", "else", "eval", "extends", 
-            "false", "field", "final", "finally", "for", "function", "if", "import", "in", "instanceof", "new", "null", 
+            "false", "field", "final", "finally", "for", "function", "if", "import", "in", "instanceof", "new", "null", "of",
             "package", "private", "protected", "public", "return", "super", "switch", "this", "throw", "true", "try", 
             "typeof", "var", "while", "with",
             "abstract", "debugger", "enum", "export", "goto", "implements", "native", "static", "synchronized", "throws",

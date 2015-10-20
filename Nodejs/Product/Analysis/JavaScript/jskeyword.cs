@@ -144,6 +144,10 @@ namespace Microsoft.NodejsTools.Parsing
             // n
             keywords['n' - 'a'] = new JSKeyword(JSToken.New, "new",
                 new JSKeyword(JSToken.Null, "null"));
+
+            //o
+            keywords['o' - 'a'] = new JSKeyword(JSToken.Of, "of");
+
             // p
             keywords['p' - 'a'] = new JSKeyword(JSToken.Public, "public",
                 new JSKeyword(JSToken.Package, "package",

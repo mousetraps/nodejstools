@@ -1128,8 +1128,7 @@ namespace Microsoft.NodejsTools.Parsing
                         // TODO: for ES6 might be 'of'
                         if (isForIn)
                         {
-                            if (JSToken.In == _curToken
-                                /*|| (_curToken == JSToken.Identifier && string.CompareOrdinal(GetCode(_curSpan), "of") == 0)*/)
+                            if (JSToken.In == _curToken || JSToken.Of == _curToken)
                             {
                                 GetNextToken();
                                 condOrColl = ParseExpression();
@@ -1146,8 +1145,7 @@ namespace Microsoft.NodejsTools.Parsing
                         {
                             bool isLHS;
                             var unary = ParseUnaryExpression(out isLHS, false);
-                            if (isLHS && (JSToken.In == _curToken
-                                /*|| (_curToken == JSToken.Identifier && string.CompareOrdinal(GetCode(_curSpan), "of") == 0)*/))
+                            if (isLHS && (JSToken.In == _curToken || _curToken == JSToken.Of))
                             {
                                 isForIn = true;
 
