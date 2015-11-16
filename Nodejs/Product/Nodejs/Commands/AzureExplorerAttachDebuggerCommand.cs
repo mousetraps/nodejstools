@@ -343,7 +343,12 @@ namespace Microsoft.NodejsTools.Commands {
                     string authHeader = await accountCountext.GetAuthenticationHeaderAsync(false);
                     request.Headers.Add(HttpRequestHeader.Authorization, authHeader);
                 } else {
-                    return null;
+                    var method = context.GetType().GetMethod("GetAuthenticationHeaderAsync", new Type[] { typeof(bool) });
+                    string authHeader = method.Invoke(context, new object[] { true }) as string;
+                    if (authHeader == null) {
+                        return null;
+                    }
+                    request.Headers.Add(HttpRequestHeader.Authorization, authHeader);
                 }
             }
 
