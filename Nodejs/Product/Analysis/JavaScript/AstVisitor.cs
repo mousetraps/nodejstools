@@ -60,7 +60,11 @@ namespace Microsoft.NodejsTools.Parsing {
         public virtual bool Walk(JsAst jsAst) { return true; }
         public virtual bool Walk(FunctionExpression functionExpression) { return true; }
         public virtual bool Walk(ExpressionStatement node) { return true; }
-        
+
+        public virtual bool Walk(MethodDefinition node) { return true; }
+
+        public virtual bool Walk(ClassDefinition node) { return true; }
+
 
         public virtual void PostWalk(ArrayLiteral node) { }
         public virtual void PostWalk(BinaryOperator node) { }
@@ -106,5 +110,9 @@ namespace Microsoft.NodejsTools.Parsing {
         public virtual void PostWalk(JsAst jsAst) { }
         public virtual void PostWalk(FunctionExpression functionExpression) { }
         public virtual void PostWalk(ExpressionStatement node) { }
+
+        public virtual void PostWalk(MethodDefinition node) { }
+        public virtual void PostWalk(ClassDefinition node) { }
+
     }
 }

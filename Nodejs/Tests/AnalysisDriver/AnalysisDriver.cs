@@ -580,7 +580,7 @@ namespace AnalysisDriver {
             }
 
 
-            if (packages.Count == 0) {
+            if (packages.Count == 0 && dirRun == null) {
                 Console.WriteLine("No packages were specified");
                 return -9;
             }
