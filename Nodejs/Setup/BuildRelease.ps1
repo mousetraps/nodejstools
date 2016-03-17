@@ -377,10 +377,14 @@ if ($vstarget) {
     $vstarget = $vstarget | %{ "{0:00.0}" -f [float]::Parse($_) }
 }
 foreach ($target_vs in $supported_vs_versions) {
+        $number = $target_vs.number;
+        if ($number -eq "15.0") {
+            $number = "14.0"
+        }
         if ((-not $vstarget -and $target_vs.build_by_default) -or ($target_vs.number -in $vstarget)) {
-        $vspath = Get-ItemProperty -Path "HKLM:\Software\Wow6432Node\Microsoft\VisualStudio\$($target_vs.number)" -EA 0
+        $vspath = Get-ItemProperty -Path "HKLM:\Software\Wow6432Node\Microsoft\VisualStudio\$($number)" -EA 0
         if (-not $vspath) {
-            $vspath = Get-ItemProperty -Path "HKLM:\Software\Microsoft\VisualStudio\$($target_vs.number)" -EA 0
+            $vspath = Get-ItemProperty -Path "HKLM:\Software\Microsoft\VisualStudio\$($number)" -EA 0
         }
         if ($vspath -and $vspath.InstallDir -and (Test-Path -Path $vspath.InstallDir)) {
             $target_versions += $target_vs
